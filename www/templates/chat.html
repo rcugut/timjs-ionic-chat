@@ -1,0 +1,37 @@
+<ion-view title="timjs Chat Room" class="">
+
+    <div class="bar bar-calm has-header">
+        <h4>Messages</h4>
+    </div>
+
+    <ion-content scroll="true" padding="false" class="has-subheader has-footer content">
+
+        <div class="card" ng-repeat="message in messages | orderBy:'created_at'" ng-show="message.content">
+            <div class="item message">
+                <div class="header">
+                    <div class="author">{{message.created_by}}</div>
+                    <div class="time">{{message.created_at | dateToday: 'short' }}</div>
+                </div>
+                <div class="body">
+                    <div class="content">{{message.content}}</div>
+                </div>
+            </div>
+        </div>
+
+        <p>&nbsp;</p>
+
+    </ion-content>
+
+
+    <form ui-keypress="{13:'submitAddMessage($event)'}" data-ng-submit="submitAddMessage()" >
+        <div class="bar bar-footer bar-calm has-tabs item-input-inset">
+            <label class="item-input-wrapper">
+                <input type="text" placeholder="your message ..." data-ng-model="newMessage">
+            </label>
+            <button class="button button-positive">Send</button>
+        </div>
+    </form>
+
+
+
+</ion-view>
