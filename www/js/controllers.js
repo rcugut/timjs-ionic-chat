@@ -40,9 +40,16 @@ angular.module('timjsChat.controllers', ['timjsChat.services'])
 
 
 
-.controller('SettingsCtrl', function($scope, ChatService) {
+.controller('SettingsCtrl', function($scope, ChatService, $state) {
 
-// TODO
+          $scope.data = {
+                   username: ChatService.getUsername()
+           };
+
+           $scope.setUsername = function() {
+             ChatService.setUsername($scope.data.username);
+             $state.go('chat');
+           }
 
 })
 
